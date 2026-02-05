@@ -35,6 +35,18 @@
         .container {
             max-width: 480px;
             width: 100%;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
@@ -69,16 +81,17 @@
         }
 
         .links a {
-            color: #1a1a1a;
+            color: #2563eb;
             text-decoration: none;
             font-size: 1rem;
             padding: 0.25rem 0;
             border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, color 0.2s;
         }
 
         .links a:hover {
-            border-bottom-color: #1a1a1a;
+            color: #1d4ed8;
+            border-bottom-color: #1d4ed8;
         }
 
         .link-desc {
@@ -118,10 +131,11 @@
                 color: #999;
             }
             .links a {
-                color: #fafafa;
+                color: #60a5fa;
             }
             .links a:hover {
-                border-bottom-color: #fafafa;
+                color: #93c5fd;
+                border-bottom-color: #93c5fd;
             }
             .link-desc {
                 color: #999;
