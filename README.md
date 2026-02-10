@@ -1,29 +1,25 @@
 # toddperumal.com
 
-My personal website. A simple static site deployed on Vercel.
+My personal website. A single-page static site with bio, writing links, and current projects.
 
-## What's here
+## Features
 
-- `index.html` — the whole site (for now)
-
-## To update
-
-1. Edit `index.html`
-2. Commit and push to `main`
-3. Vercel auto-deploys
-
-## Sections
-
-- **Bio** — who I am, what I'm about
-- **Writing** — links to my three Substacks
-- **Now** — what I'm currently working on (update this whenever)
+- **Bio** — Who I am, what I'm about
+- **Writing** — Links to my three Substacks
+- **Now** — What I'm currently working on
 - **Elsewhere** — LinkedIn, GitHub
+- **Dark/light mode** — Auto-detects system preference
+- **Responsive** — Works on mobile and desktop
 
-## Future
+## Tech Stack
 
-- Photography section
-- Maybe individual pages if it outgrows one file
+- Plain HTML + CSS (no frameworks, no build step)
+- Deployed on Vercel
 
----
+## Running Locally
 
-Built with plain HTML/CSS. No frameworks, no build step, no nonsense.
+Open `index.html` in a browser.
+
+## Deploy
+
+Commit and push to `main` — Vercel auto-deploys.
