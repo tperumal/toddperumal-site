@@ -6,6 +6,7 @@ My personal website. A single-page static site with bio, writing links, and curr
 
 - **Bio** — Who I am, what I'm about
 - **Writing** — Links to my three Substacks
+- **Projects** — Project cards linking to Neon Puck and Signal & Stories Dashboard
 - **Now** — What I'm currently working on
 - **Elsewhere** — LinkedIn, GitHub
 - **Dark/light mode** — Auto-detects system preference

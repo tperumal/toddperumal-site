@@ -33,9 +33,16 @@
         }
 
         .container {
-            max-width: 480px;
+            max-width: 720px;
             width: 100%;
             animation: fadeIn 0.6s ease-out;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
         }
 
         @keyframes fadeIn {
@@ -119,6 +126,58 @@
             color: #1a1a1a;
         }
 
+        .project-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .project-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-card a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .project-card a:hover {
+            color: #1d4ed8;
+        }
+
+        .project-card .project-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .project-card .project-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #888;
+            background: #f0f0f0;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #1a1a1a;
@@ -149,6 +208,26 @@
             .elsewhere a:hover {
                 color: #fafafa;
             }
+            .project-card {
+                background: #252525;
+                border-color: #333;
+            }
+            .project-card:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+            .project-card a {
+                color: #60a5fa;
+            }
+            .project-card a:hover {
+                color: #93c5fd;
+            }
+            .project-card .project-desc {
+                color: #999;
+            }
+            .project-card .project-tag {
+                background: #333;
+                color: #999;
+            }
         }
     </style>
 </head>
@@ -158,34 +237,56 @@
         
         <p class="bio">I write essays, build products, and review films with my partner. I'm interested in how things get made — and why most of them don't.</p>
 
-        <div class="section">
-            <div class="section-title">Writing</div>
-            <div class="links">
-                <div>
-                    <a href="https://toddperumal.substack.com">Essays</a>
-                    <span class="link-desc"> — personal writing, technology, culture</span>
+        <div class="grid">
+            <div class="left-col">
+                <div class="section">
+                    <div class="section-title">Writing</div>
+                    <div class="links">
+                        <div>
+                            <a href="https://toddperumal.substack.com">Essays</a>
+                            <span class="link-desc"> — personal writing, technology, culture</span>
+                        </div>
+                        <div>
+                            <a href="https://basicacts.substack.com">Basic Acts</a>
+                            <span class="link-desc"> — film reviews with Fran</span>
+                        </div>
+                        <div>
+                            <a href="https://signalandstories.substack.com">Signal and Stories</a>
+                            <span class="link-desc"> — building and AI</span>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <a href="https://basicacts.substack.com">Basic Acts</a>
-                    <span class="link-desc"> — film reviews with Fran</span>
+
+                <div class="section">
+                    <div class="section-title">Now</div>
+                    <p class="now">Working on a short story collection. Writing the Millennium Wave series. Trying to get outside more.</p>
                 </div>
-                <div>
-                    <a href="https://signalandstories.substack.com">Signal and Stories</a>
-                    <span class="link-desc"> — building and AI</span>
+
+                <div class="section">
+                    <div class="section-title">Elsewhere</div>
+                    <div class="elsewhere">
+                        <a href="https://www.linkedin.com/in/toddperumal/">LinkedIn</a>
+                        <a href="https://github.com/tperumal">GitHub</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-title">Now</div>
-            <p class="now">Working on a short story collection. Writing the Millennium Wave series. Trying to get outside more.</p>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Elsewhere</div>
-            <div class="elsewhere">
-                <a href="https://www.linkedin.com/in/toddperumal/">LinkedIn</a>
-                <a href="https://github.com/tperumal">GitHub</a>
+            <div class="right-col">
+                <div class="section">
+                    <div class="section-title">Projects</div>
+                    <div class="project-cards">
+                        <div class="project-card">
+                            <a href="https://neon-puck.onrender.com">Neon Puck</a>
+                            <div class="project-desc">2-player air hockey with online multiplayer</div>
+                            <span class="project-tag">Canvas + Socket.io</span>
+                        </div>
+                        <div class="project-card">
+                            <a href="https://signalandstories.dev">Signal & Stories Dashboard</a>
+                            <div class="project-desc">Housing market data + AI analysis</div>
+                            <span class="project-tag">Vercel Serverless + Claude</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
