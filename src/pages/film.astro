@@ -1,0 +1,137 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Film" description="Film credits, reviews, and video work.">
+  <section class="hero">
+    <div class="container">
+      <h1 class="page-title">Film</h1>
+      <p class="page-desc">Credits, reviews, and video work.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="film-grid">
+
+        <a href="https://basicacts.substack.com" target="_blank" rel="noopener" class="film-card">
+          <span class="film-tag">Reviews</span>
+          <h2 class="film-title">Basic Acts</h2>
+          <p class="film-desc">Film reviews written with Fran. Honest takes on what we watch, published on Substack.</p>
+          <span class="film-cta">Read reviews &rarr;</span>
+        </a>
+
+        <div class="film-card film-card--placeholder">
+          <span class="film-tag">Credits</span>
+          <h2 class="film-title">IMDB</h2>
+          <p class="film-desc">Film credits and production work. IMDB link coming soon.</p>
+        </div>
+
+        <div class="film-card film-card--placeholder">
+          <span class="film-tag">Video</span>
+          <h2 class="film-title">Videos</h2>
+          <p class="film-desc">Video work and embedded content coming soon.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--space-5xl) 0 var(--space-xl);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .film-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .film-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-2xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  a.film-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-text-tertiary);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    a.film-card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .film-card--placeholder {
+    border-style: dashed;
+  }
+
+  .film-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .film-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .film-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .film-cta {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    margin-top: var(--space-lg);
+    transition: color var(--transition-fast);
+  }
+
+  a.film-card:hover .film-cta {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-3xl) 0 var(--space-md);
+    }
+
+    .film-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .film-card {
+      padding: var(--space-xl);
+    }
+  }
+</style>

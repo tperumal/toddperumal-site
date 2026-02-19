@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Photography" description="Selected photographs by Todd Perumal.">
+  <section class="hero">
+    <div class="container">
+      <h1 class="page-title">Photography</h1>
+      <p class="page-desc">Selected photographs.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="placeholder">
+        <p class="placeholder-text">Photos coming soon.</p>
+        <p class="placeholder-sub">This gallery will feature selected photographs. Check back for updates.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--space-5xl) 0 var(--space-xl);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .placeholder {
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4xl) var(--space-xl);
+    text-align: center;
+  }
+
+  .placeholder-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+  }
+
+  .placeholder-sub {
+    font-size: 0.9rem;
+    color: var(--color-text-tertiary);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-3xl) 0 var(--space-md);
+    }
+  }
+</style>

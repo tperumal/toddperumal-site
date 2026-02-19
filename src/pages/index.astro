@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-name" transition:name="site-title">Todd Perumal</h1>
+      <p class="hero-bio">
+        I write essays, build products, and review films with my partner.<br />
+        I'm interested in how things get made — and why most of them don't.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Selected Work</p>
+      <div class="featured-grid">
+
+        <a href="/projects" class="featured-card featured-card--large">
+          <span class="featured-tag">Projects</span>
+          <h2 class="featured-title">Neon Puck</h2>
+          <p class="featured-desc">2-player air hockey with online multiplayer. Built with Canvas + Socket.io.</p>
+          <span class="featured-cta">View all projects &rarr;</span>
+        </a>
+
+        <a href="/writing" class="featured-card">
+          <span class="featured-tag">Writing</span>
+          <h3 class="featured-title">Essays & Newsletters</h3>
+          <p class="featured-desc">Personal essays, film reviews, and thoughts on building.</p>
+          <span class="featured-cta">Read &rarr;</span>
+        </a>
+
+        <a href="/stories" class="featured-card">
+          <span class="featured-tag">Stories</span>
+          <h3 class="featured-title">Short Fiction</h3>
+          <p class="featured-desc">Denton TX 1995 and other works.</p>
+          <span class="featured-cta">Read &rarr;</span>
+        </a>
+
+        <a href="/photography" class="featured-card">
+          <span class="featured-tag">Photography</span>
+          <h3 class="featured-title">Photo Gallery</h3>
+          <p class="featured-desc">Selected photographs.</p>
+          <span class="featured-cta">View &rarr;</span>
+        </a>
+
+        <a href="/film" class="featured-card">
+          <span class="featured-tag">Film</span>
+          <h3 class="featured-title">Film & Video</h3>
+          <p class="featured-desc">IMDB credits, reviews with Basic Acts, and video work.</p>
+          <span class="featured-cta">Explore &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Now -->
+  <section class="section now-section">
+    <div class="container">
+      <p class="section-label">Now</p>
+      <p class="now-text">Working on a short story collection. Writing the Millennium Wave series. Trying to get outside more.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ===== Hero ===== */
+  .hero {
+    padding: var(--space-5xl) 0 var(--space-3xl);
+  }
+
+  .hero-name {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-bio {
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 40ch;
+  }
+
+  /* ===== Featured Grid ===== */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .featured-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-text-tertiary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .featured-card:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .featured-card--large {
+    grid-column: 1 / -1;
+  }
+
+  .featured-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .featured-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    letter-spacing: -0.01em;
+  }
+
+  .featured-card--large .featured-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .featured-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .featured-cta {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    margin-top: var(--space-lg);
+    transition: color var(--transition-fast);
+  }
+
+  .featured-card:hover .featured-cta {
+    color: var(--color-text);
+  }
+
+  /* ===== Now ===== */
+  .now-section {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .now-text {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    max-width: 50ch;
+    line-height: 1.7;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

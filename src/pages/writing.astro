@@ -1,0 +1,144 @@
+---
+import Base from '../layouts/Base.astro';
+
+const publications = [
+  {
+    name: 'Essays',
+    description: 'Personal writing on technology, culture, and how things get made.',
+    url: 'https://toddperumal.substack.com',
+    platform: 'Substack',
+  },
+  {
+    name: 'Basic Acts',
+    description: 'Film reviews written with Fran. Honest takes on what we watch.',
+    url: 'https://basicacts.substack.com',
+    platform: 'Substack',
+  },
+  {
+    name: 'Signal and Stories',
+    description: 'Writing about building, AI, and technology.',
+    url: 'https://signalandstories.substack.com',
+    platform: 'Substack',
+  },
+];
+---
+
+<Base title="Writing" description="Essays, film reviews, and newsletters.">
+  <section class="hero">
+    <div class="container">
+      <h1 class="page-title">Writing</h1>
+      <p class="page-desc">Essays, film reviews, and newsletters.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="publication-list">
+        {publications.map((pub) => (
+          <a href={pub.url} target="_blank" rel="noopener" class="publication-card">
+            <div class="publication-header">
+              <h2 class="publication-name">{pub.name}</h2>
+              <span class="publication-platform">{pub.platform}</span>
+            </div>
+            <p class="publication-desc">{pub.description}</p>
+            <span class="publication-cta">Read on Substack &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--space-5xl) 0 var(--space-xl);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .publication-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .publication-card {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    background: var(--color-surface);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .publication-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-text-tertiary);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .publication-card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .publication-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .publication-name {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .publication-platform {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .publication-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+
+  .publication-cta {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    transition: color var(--transition-fast);
+  }
+
+  .publication-card:hover .publication-cta {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-3xl) 0 var(--space-md);
+    }
+
+    .publication-card {
+      padding: var(--space-xl);
+    }
+  }
+</style>

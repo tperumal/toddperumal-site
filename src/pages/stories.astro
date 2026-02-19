@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+
+const stories = [
+  {
+    title: 'Denton TX 1995',
+    description: 'A short story.',
+    status: 'Published',
+  },
+];
+---
+
+<Base title="Stories" description="Short fiction by Todd Perumal.">
+  <section class="hero">
+    <div class="container">
+      <h1 class="page-title">Stories</h1>
+      <p class="page-desc">Short fiction.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="story-list">
+        {stories.map((story) => (
+          <div class="story-card">
+            <div class="story-header">
+              <h2 class="story-title">{story.title}</h2>
+              <span class="story-status">{story.status}</span>
+            </div>
+            <p class="story-desc">{story.description}</p>
+          </div>
+        ))}
+
+        <div class="story-card story-card--placeholder">
+          <h2 class="story-title">More stories coming</h2>
+          <p class="story-desc">Working on a short story collection. New pieces will appear here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--space-5xl) 0 var(--space-xl);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .story-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 700px;
+  }
+
+  .story-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    background: var(--color-surface);
+  }
+
+  .story-card--placeholder {
+    border-style: dashed;
+  }
+
+  .story-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .story-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .story-status {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+  }
+
+  .story-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-3xl) 0 var(--space-md);
+    }
+
+    .story-card {
+      padding: var(--space-xl);
+    }
+  }
+</style>

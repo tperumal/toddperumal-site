@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About" description="About Todd Perumal — bio, contact, and elsewhere links.">
+  <section class="hero">
+    <div class="container">
+      <h1 class="page-title">About</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <p class="about-bio">
+            I write essays, build products, and review films with my partner. I'm interested in how things get made — and why most of them don't.
+          </p>
+          <p class="about-bio">
+            Currently working on a short story collection and the Millennium Wave essay series.
+          </p>
+
+          <div class="about-section">
+            <h2 class="about-heading">Writing</h2>
+            <ul class="about-links">
+              <li>
+                <a href="https://toddperumal.substack.com" target="_blank" rel="noopener">
+                  Essays
+                </a>
+                <span class="about-link-desc">— personal writing, technology, culture</span>
+              </li>
+              <li>
+                <a href="https://basicacts.substack.com" target="_blank" rel="noopener">
+                  Basic Acts
+                </a>
+                <span class="about-link-desc">— film reviews with Fran</span>
+              </li>
+              <li>
+                <a href="https://signalandstories.substack.com" target="_blank" rel="noopener">
+                  Signal and Stories
+                </a>
+                <span class="about-link-desc">— building and AI</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">Elsewhere</h2>
+            <ul class="about-links">
+              <li><a href="https://www.linkedin.com/in/toddperumal/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://github.com/tperumal" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="https://toddperumal.substack.com" target="_blank" rel="noopener">Substack</a></li>
+            </ul>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">Contact</h2>
+            <p class="about-contact">
+              Best way to reach me is through <a href="https://www.linkedin.com/in/toddperumal/" target="_blank" rel="noopener">LinkedIn</a> or by subscribing to one of my newsletters.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--space-5xl) 0 var(--space-xl);
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .about-content {
+    max-width: 600px;
+  }
+
+  .about-bio {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .about-section {
+    margin-top: var(--space-2xl);
+  }
+
+  .about-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-md);
+  }
+
+  .about-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .about-links a {
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-fast);
+  }
+
+  .about-links a:hover {
+    border-bottom-color: var(--color-text);
+  }
+
+  .about-link-desc {
+    color: var(--color-text-tertiary);
+    font-size: 0.9rem;
+  }
+
+  .about-contact {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .about-contact a {
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-border);
+    transition: border-color var(--transition-fast);
+  }
+
+  .about-contact a:hover {
+    border-bottom-color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-3xl) 0 var(--space-md);
+    }
+  }
+</style>
