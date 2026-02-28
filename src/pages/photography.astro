@@ -1,63 +1,84 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const photos = [
+  { src: '/photos/untitled-1.jpg', title: 'Untitled 1' },
+  { src: '/photos/untitled-2.jpg', title: 'Untitled 2' },
+  { src: '/photos/untitled-3.jpg', title: 'Untitled 3' },
+  { src: '/photos/untitled-4.jpg', title: 'Untitled 4' },
+  { src: '/photos/untitled-5.jpg', title: 'Untitled 5' },
+  { src: '/photos/untitled-6.jpg', title: 'Untitled 6' },
+  { src: '/photos/untitled-7.jpg', title: 'Untitled 7' },
+];
 ---
 
 <Base title="Photography" description="Selected photographs by Todd Perumal.">
   <section class="hero">
-    <div class="container">
-      <h1 class="page-title">Photography</h1>
-      <p class="page-desc">Selected photographs.</p>
-    </div>
+    <h1 class="page-title">Photography</h1>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="placeholder">
-        <p class="placeholder-text">Photos coming soon.</p>
-        <p class="placeholder-sub">This gallery will feature selected photographs. Check back for updates.</p>
-      </div>
-    </div>
+  <section class="series">
+    <h2 class="series-title">Ingleside</h2>
+    <p class="series-meta">San Francisco, March 2014. Kodak 400, disposable camera.</p>
+  </section>
+
+  <section class="gallery">
+    {photos.map((photo) => (
+      <figure class="photo-item">
+        <img src={photo.src} alt={photo.title} loading="lazy" />
+        <figcaption class="photo-caption">{photo.title}</figcaption>
+      </figure>
+    ))}
   </section>
 </Base>
 
 <style>
   .hero {
-    padding: var(--space-5xl) 0 var(--space-xl);
+    padding-bottom: 60px;
   }
 
   .page-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-size: var(--text-huge);
+    font-weight: 600;
     letter-spacing: -0.03em;
-    margin-bottom: var(--space-sm);
   }
 
-  .page-desc {
-    font-size: 1.1rem;
-    color: var(--color-text-secondary);
+  .series {
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--fg-10);
   }
 
-  .placeholder {
-    border: 1px dashed var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4xl) var(--space-xl);
-    text-align: center;
+  .series-title {
+    font-size: var(--text-large);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
   }
 
-  .placeholder-text {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: var(--space-sm);
+  .series-meta {
+    font-size: var(--text-small);
+    color: var(--fg-33);
   }
 
-  .placeholder-sub {
-    font-size: 0.9rem;
-    color: var(--color-text-tertiary);
+  .gallery {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
   }
 
-  @media (max-width: 640px) {
-    .hero {
-      padding: var(--space-3xl) 0 var(--space-md);
-    }
+  .photo-item {
+    max-width: 100%;
+  }
+
+  .photo-item img {
+    width: 100%;
+    display: block;
+  }
+
+  .photo-caption {
+    font-size: var(--text-small);
+    color: var(--fg-33);
+    margin-top: 12px;
   }
 </style>

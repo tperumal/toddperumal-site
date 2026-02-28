@@ -25,120 +25,87 @@ const publications = [
 
 <Base title="Writing" description="Essays, film reviews, and newsletters.">
   <section class="hero">
-    <div class="container">
-      <h1 class="page-title">Writing</h1>
-      <p class="page-desc">Essays, film reviews, and newsletters.</p>
-    </div>
+    <h1 class="page-title">Writing</h1>
+    <p class="page-desc">Essays, film reviews, and newsletters.</p>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="publication-list">
-        {publications.map((pub) => (
-          <a href={pub.url} target="_blank" rel="noopener" class="publication-card">
-            <div class="publication-header">
-              <h2 class="publication-name">{pub.name}</h2>
-              <span class="publication-platform">{pub.platform}</span>
-            </div>
-            <p class="publication-desc">{pub.description}</p>
-            <span class="publication-cta">Read on Substack &rarr;</span>
-          </a>
-        ))}
+  {publications.map((pub) => (
+    <section class="pub-item">
+      <div class="pub-header">
+        <h2 class="pub-name">{pub.name}</h2>
+        <span class="pub-platform">{pub.platform}</span>
       </div>
-    </div>
-  </section>
+      <p class="pub-desc">{pub.description}</p>
+      <a href={pub.url} target="_blank" rel="noopener" class="pub-link">Read on Substack &rarr;</a>
+    </section>
+  ))}
 </Base>
 
 <style>
   .hero {
-    padding: var(--space-5xl) 0 var(--space-xl);
+    padding-bottom: 60px;
   }
 
   .page-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-size: var(--text-huge);
+    font-weight: 600;
     letter-spacing: -0.03em;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 12px;
   }
 
   .page-desc {
-    font-size: 1.1rem;
-    color: var(--color-text-secondary);
+    font-size: var(--text-body);
+    color: var(--fg-50);
   }
 
-  .publication-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
+  .pub-item {
+    padding-top: 60px;
+    border-top: 1px solid var(--fg-10);
+    margin-top: 60px;
   }
 
-  .publication-card {
-    display: block;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-2xl);
-    background: var(--color-surface);
-    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  .pub-item:first-of-type {
+    margin-top: 0;
   }
 
-  .publication-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-text-tertiary);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .publication-card:hover {
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    }
-  }
-
-  .publication-header {
+  .pub-header {
     display: flex;
     align-items: baseline;
-    gap: var(--space-md);
-    margin-bottom: var(--space-sm);
+    gap: 16px;
+    margin-bottom: 8px;
   }
 
-  .publication-name {
-    font-size: 1.35rem;
+  .pub-name {
+    font-size: var(--text-large);
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 
-  .publication-platform {
-    font-size: 0.75rem;
+  .pub-platform {
+    font-size: var(--text-xs);
     font-weight: 500;
-    color: var(--color-text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: var(--fg-33);
   }
 
-  .publication-desc {
-    font-size: 0.95rem;
-    color: var(--color-text-secondary);
+  .pub-desc {
+    font-size: var(--text-body);
+    color: var(--fg-50);
     line-height: 1.6;
-    margin-bottom: var(--space-lg);
+    margin-bottom: 20px;
   }
 
-  .publication-cta {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--color-text-tertiary);
-    transition: color var(--transition-fast);
+  .pub-link {
+    font-size: var(--text-small);
+    color: var(--fg-50);
+    border-bottom: 1px solid var(--fg-25);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
 
-  .publication-card:hover .publication-cta {
-    color: var(--color-text);
-  }
-
-  @media (max-width: 640px) {
-    .hero {
-      padding: var(--space-3xl) 0 var(--space-md);
-    }
-
-    .publication-card {
-      padding: var(--space-xl);
-    }
+  .pub-link:hover {
+    color: var(--fg);
+    border-color: var(--fg);
   }
 </style>

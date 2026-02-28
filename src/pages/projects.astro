@@ -16,145 +16,97 @@ const projects = [
     url: 'https://signalandstories.dev',
     github: 'https://github.com/tperumal/signal-and-stories-dashboard',
   },
-  {
-    name: 'Signal & Stories',
-    description: 'Next.js blog with MDX posts, dynamic OG image generation, RSS feed, and structured data. Built with the App Router.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'MDX'],
-    url: 'https://signalandstories.com',
-    github: 'https://github.com/tobysfca/signal-and-stories',
-  },
 ];
 ---
 
 <Base title="Projects" description="Things I've built — games, dashboards, and tools.">
   <section class="hero">
-    <div class="container">
-      <h1 class="page-title">Projects</h1>
-      <p class="page-desc">Things I've built.</p>
-    </div>
+    <h1 class="page-title">Projects</h1>
+    <p class="page-desc">Things I've built.</p>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="project-list">
-        {projects.map((project) => (
-          <div class="project-card">
-            <div class="project-content">
-              <h2 class="project-name">{project.name}</h2>
-              <p class="project-desc">{project.description}</p>
-              <div class="project-tags">
-                {project.tags.map((tag) => (
-                  <span class="project-tag">{tag}</span>
-                ))}
-              </div>
-              <div class="project-links">
-                <a href={project.url} target="_blank" rel="noopener" class="project-link">
-                  View Live &rarr;
-                </a>
-                <a href={project.github} target="_blank" rel="noopener" class="project-link project-link--secondary">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
+  {projects.map((project) => (
+    <section class="project-item">
+      <h2 class="project-name">{project.name}</h2>
+      <p class="project-desc">{project.description}</p>
+      <p class="project-tags">
+        {project.tags.join(' · ')}
+      </p>
+      <div class="project-links">
+        <a href={project.url} target="_blank" rel="noopener" class="project-link">View Live &rarr;</a>
+        <a href={project.github} target="_blank" rel="noopener" class="project-link project-link--secondary">GitHub</a>
       </div>
-    </div>
-  </section>
+    </section>
+  ))}
 </Base>
 
 <style>
   .hero {
-    padding: var(--space-5xl) 0 var(--space-xl);
+    padding-bottom: 60px;
   }
 
   .page-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
+    font-size: var(--text-huge);
+    font-weight: 600;
     letter-spacing: -0.03em;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 12px;
   }
 
   .page-desc {
-    font-size: 1.1rem;
-    color: var(--color-text-secondary);
+    font-size: var(--text-body);
+    color: var(--fg-50);
   }
 
-  .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
+  .project-item {
+    padding-top: 60px;
+    border-top: 1px solid var(--fg-10);
+    margin-top: 60px;
   }
 
-  .project-card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-2xl);
-    background: var(--color-surface);
-    transition: border-color var(--transition-fast);
-  }
-
-  .project-card:hover {
-    border-color: var(--color-text-tertiary);
+  .project-item:first-of-type {
+    margin-top: 0;
   }
 
   .project-name {
-    font-size: 1.5rem;
+    font-size: var(--text-large);
     font-weight: 600;
-    margin-bottom: var(--space-sm);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
   }
 
   .project-desc {
-    font-size: 0.95rem;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--space-lg);
+    font-size: var(--text-body);
+    color: var(--fg-50);
+    line-height: 1.6;
+    margin-bottom: 16px;
   }
 
   .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-lg);
-  }
-
-  .project-tag {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--color-tag-text);
-    background: var(--color-tag-bg);
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--radius-sm);
+    font-size: var(--text-small);
+    color: var(--fg-33);
+    margin-bottom: 20px;
   }
 
   .project-links {
     display: flex;
-    gap: var(--space-lg);
+    gap: 24px;
   }
 
   .project-link {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--color-text);
-    transition: color var(--transition-fast);
+    font-size: var(--text-small);
+    color: var(--fg-50);
+    border-bottom: 1px solid var(--fg-25);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
 
   .project-link:hover {
-    color: var(--color-text-secondary);
+    color: var(--fg);
+    border-color: var(--fg);
   }
 
   .project-link--secondary {
-    color: var(--color-text-tertiary);
-  }
-
-  @media (max-width: 640px) {
-    .hero {
-      padding: var(--space-3xl) 0 var(--space-md);
-    }
-
-    .project-card {
-      padding: var(--space-xl);
-    }
+    color: var(--fg-33);
+    border-color: var(--fg-15);
   }
 </style>
