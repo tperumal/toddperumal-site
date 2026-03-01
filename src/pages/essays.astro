@@ -1,0 +1,134 @@
+---
+import Base from '../layouts/Base.astro';
+
+const comingSoon = [
+  {
+    name: 'Africa Playbook',
+    description: 'Covering all 6 infrastructure crises, market sizing, competitive analysis, and build order.',
+  },
+  {
+    name: "Immigration's Effects on Families",
+    description: 'How immigration reshapes family structures, identity, and connection across generations.',
+  },
+  {
+    name: 'The Global Unbanked',
+    description: 'Who they are, why they exist, and what it will take to bring them in.',
+  },
+];
+---
+
+<Base title="Essays" description="Personal essays and thoughts on building.">
+  <section class="hero">
+    <h1 class="page-title">Essays</h1>
+    <p class="page-desc">Personal essays and thoughts on building.</p>
+  </section>
+
+  <section class="substack-section">
+    <span class="label">Newsletter</span>
+    <h2 class="section-title">Todd Perumal on Substack</h2>
+    <p class="section-desc">Essays on technology, culture, and how things get made.</p>
+    <a href="https://toddperumal.substack.com" target="_blank" rel="noopener" class="section-link">Read on Substack &rarr;</a>
+  </section>
+
+  <section class="coming-soon-header">
+    <span class="label">Coming Soon</span>
+  </section>
+
+  {comingSoon.map((essay) => (
+    <section class="essay-item essay-item--muted">
+      <h2 class="essay-name">{essay.name}</h2>
+      <p class="essay-desc">{essay.description}</p>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .hero {
+    padding-bottom: 60px;
+  }
+
+  .page-title {
+    font-size: var(--text-huge);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    font-size: var(--text-body);
+    color: var(--fg-50);
+  }
+
+  .substack-section {
+    padding-top: 60px;
+    border-top: 1px solid var(--fg-10);
+  }
+
+  .label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-33);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: var(--text-large);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .section-desc {
+    font-size: var(--text-body);
+    color: var(--fg-50);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .section-link {
+    font-size: var(--text-small);
+    color: var(--fg-50);
+    border-bottom: 1px solid var(--fg-25);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .section-link:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+  }
+
+  .coming-soon-header {
+    padding-top: 80px;
+  }
+
+  .essay-item {
+    padding-top: 60px;
+    border-top: 1px solid var(--fg-10);
+    margin-top: 60px;
+  }
+
+  .essay-item:first-of-type {
+    margin-top: 0;
+  }
+
+  .essay-item--muted {
+    opacity: 0.4;
+  }
+
+  .essay-name {
+    font-size: var(--text-large);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .essay-desc {
+    font-size: var(--text-body);
+    color: var(--fg-50);
+    line-height: 1.6;
+  }
+</style>
