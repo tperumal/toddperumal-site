@@ -9,17 +9,17 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section class="work-section">
-    <span class="label">Projects</span>
-    <h2 class="work-title">Things I've Built</h2>
-    <p class="work-desc">Games, dashboards, and tools — from multiplayer air hockey to economic indicator tracking.</p>
-    <a href="/projects" class="work-link">View all projects &rarr;</a>
-  </section>
-
-  <section class="work-section">
     <span class="label">Essays</span>
     <h2 class="work-title">Writing & Ideas</h2>
     <p class="work-desc">Essays on technology, culture, infrastructure, and how things get made.</p>
     <a href="/essays" class="work-link">Read essays &rarr;</a>
+  </section>
+
+  <section class="work-section">
+    <span class="label">Projects</span>
+    <h2 class="work-title">Things I've Built</h2>
+    <p class="work-desc">Games, dashboards, and tools — from multiplayer air hockey to economic indicator tracking.</p>
+    <a href="/projects" class="work-link">View all projects &rarr;</a>
   </section>
 
   <section class="work-section">
@@ -32,7 +32,7 @@ import Base from '../layouts/Base.astro';
 
 <style>
   .hero {
-    padding-bottom: var(--section-space);
+    padding-bottom: 60px;
   }
 
   .hero-headline {
@@ -41,7 +41,7 @@ import Base from '../layouts/Base.astro';
     letter-spacing: -0.03em;
     line-height: 1.05;
     max-width: 18ch;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .hero-sub {
@@ -53,7 +53,7 @@ import Base from '../layouts/Base.astro';
 
   /* ===== Work Sections ===== */
   .work-section {
-    padding-top: var(--section-space);
+    padding-top: 40px;
     border-top: 1px solid var(--fg-10);
   }
 
@@ -64,7 +64,7 @@ import Base from '../layouts/Base.astro';
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--fg-33);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .work-title {
@@ -78,7 +78,7 @@ import Base from '../layouts/Base.astro';
     font-size: var(--text-body);
     color: var(--fg-50);
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 
   .work-link {
