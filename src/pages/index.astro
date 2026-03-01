@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 
 <Base>
   <section class="hero">
-    <h1 class="hero-headline">I write essays, build products, and review films with my partner.</h1>
+    <h1 class="hero-headline">I write essays and build products.</h1>
     <p class="hero-sub">I'm interested in how things get made — and why most of them don't.</p>
   </section>
 
@@ -16,35 +16,17 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section class="work-section">
-    <span class="label">Writing</span>
-    <h2 class="work-title">Essays & Newsletters</h2>
-    <p class="work-desc">Personal essays, film reviews, and thoughts on building.</p>
-    <a href="/writing" class="work-link">Read &rarr;</a>
+    <span class="label">Essays</span>
+    <h2 class="work-title">Writing on Substack</h2>
+    <p class="work-desc">Personal essays and thoughts on building.</p>
+    <a href="https://toddperumal.substack.com" target="_blank" rel="noopener" class="work-link">Read on Substack &rarr;</a>
   </section>
 
   <section class="work-section">
-    <span class="label">Film & Video</span>
-    <h2 class="work-title">Film & Video</h2>
-    <p class="work-desc">IMDB credits, reviews with Basic Acts, and video work.</p>
-    <a href="/film" class="work-link">Explore &rarr;</a>
-  </section>
-
-  <section class="work-section">
-    <span class="label">Photography</span>
-    <h2 class="work-title">Photo Gallery</h2>
-    <p class="work-desc">Selected photographs.</p>
-    <a href="/photography" class="work-link">View &rarr;</a>
-  </section>
-
-  <section class="work-section work-section--muted">
-    <span class="label">Stories</span>
-    <h2 class="work-title">Short Fiction</h2>
-    <p class="work-desc">Denton TX 1995 and other works. Coming soon.</p>
-  </section>
-
-  <section class="now-section">
-    <span class="label">Now</span>
-    <p class="now-text">Working on a short story collection. Writing the Millennium Wave series. Trying to get outside more.</p>
+    <span class="label">Career</span>
+    <h2 class="work-title">Background & Experience</h2>
+    <p class="work-desc">Where I've worked and what I've learned along the way.</p>
+    <a href="/career" class="work-link">View career &rarr;</a>
   </section>
 </Base>
 
@@ -73,10 +55,6 @@ import Base from '../layouts/Base.astro';
   .work-section {
     padding-top: var(--section-space);
     border-top: 1px solid var(--fg-10);
-  }
-
-  .work-section--muted {
-    opacity: 0.4;
   }
 
   .label {
@@ -114,17 +92,5 @@ import Base from '../layouts/Base.astro';
   .work-link:hover {
     color: var(--fg);
     border-color: var(--fg);
-  }
-
-  /* ===== Now ===== */
-  .now-section {
-    padding-top: var(--section-space);
-    border-top: 1px solid var(--fg-10);
-  }
-
-  .now-text {
-    font-size: var(--text-body);
-    color: var(--fg-50);
-    line-height: 1.6;
   }
 </style>

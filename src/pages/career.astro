@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Career" description="Background, experience, and what I've learned along the way.">
+  <section class="hero">
+    <h1 class="page-title">Career</h1>
+    <p class="page-desc">Where I've worked and what I've learned along the way.</p>
+  </section>
+
+  <section class="career-section">
+    <span class="label">Background</span>
+    <p class="career-text">
+      I've spent my career at the intersection of technology and strategy — building products, leading teams, and figuring out how to make things that matter. More details coming soon.
+    </p>
+  </section>
+
+  <section class="career-section">
+    <span class="label">Connect</span>
+    <p class="career-text">Find me elsewhere on the internet.</p>
+    <div class="connect-links">
+      <a href="https://www.linkedin.com/in/toddperumal/" target="_blank" rel="noopener" class="connect-link">LinkedIn &rarr;</a>
+      <a href="https://github.com/tperumal" target="_blank" rel="noopener" class="connect-link">GitHub &rarr;</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-bottom: 60px;
+  }
+
+  .page-title {
+    font-size: var(--text-huge);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    font-size: var(--text-body);
+    color: var(--fg-50);
+  }
+
+  .career-section {
+    padding-top: 60px;
+    border-top: 1px solid var(--fg-10);
+  }
+
+  .label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-33);
+    margin-bottom: 16px;
+  }
+
+  .career-text {
+    font-size: var(--text-body);
+    color: var(--fg-50);
+    line-height: 1.6;
+    max-width: 60ch;
+    margin-bottom: 20px;
+  }
+
+  .connect-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .connect-link {
+    font-size: var(--text-small);
+    color: var(--fg-50);
+    border-bottom: 1px solid var(--fg-25);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .connect-link:hover {
+    color: var(--fg);
+    border-color: var(--fg);
+  }
+</style>

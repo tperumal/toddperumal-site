@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = 'Todd Perumal',
-  description = "I write essays, build products, and review films with my partner. I'm interested in how things get made — and why most of them don't.",
+  description = "I write essays and build products. I'm interested in how things get made — and why most of them don't.",
 } = Astro.props;
 
 const pageTitle = title === 'Todd Perumal' ? title : `${title} — Todd Perumal`;
@@ -18,11 +18,8 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
-  { href: '/writing', label: 'Writing' },
-  { href: '/film', label: 'Film' },
-  { href: '/photography', label: 'Photography' },
-  { href: '/stories', label: 'Stories' },
-  { href: '/about', label: 'About' },
+  { href: 'https://toddperumal.substack.com', label: 'Essays', external: true },
+  { href: '/career', label: 'Career' },
 ];
 ---
 
@@ -61,10 +58,11 @@ const navLinks = [
   </header>
 
   <nav class="site-nav">
-    {navLinks.map(({ href, label }) => (
+    {navLinks.map(({ href, label, external }) => (
       <a
         href={href}
-        class:list={['nav-item', { active: currentPath === href || (href !== '/' && currentPath.startsWith(href)) }]}
+        class:list={['nav-item', { active: !external && (currentPath === href || (href !== '/' && currentPath.startsWith(href))) }]}
+        {...(external ? { target: '_blank', rel: 'noopener' } : {})}
       >
         {label}
       </a>
