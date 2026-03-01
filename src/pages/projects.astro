@@ -17,6 +17,25 @@ const projects = [
     github: 'https://github.com/tperumal/signal-and-stories-dashboard',
   },
 ];
+
+const comingSoon = [
+  {
+    name: 'WaterSePush',
+    description: 'Interactive React prototype with 3 South African metros, 28 zones, alerts, and community reporting.',
+  },
+  {
+    name: 'Gaysingh Road',
+    description: 'A project on South African Indians.',
+  },
+  {
+    name: 'Saturdayish',
+    description: 'A community of builders.',
+  },
+  {
+    name: 'Ikhaya Club',
+    description: 'An app for family spread apart.',
+  },
+];
 ---
 
 <Base title="Projects" description="Things I've built — games, dashboards, and tools.">
@@ -36,6 +55,17 @@ const projects = [
         <a href={project.url} target="_blank" rel="noopener" class="project-link">View Live &rarr;</a>
         <a href={project.github} target="_blank" rel="noopener" class="project-link project-link--secondary">GitHub</a>
       </div>
+    </section>
+  ))}
+
+  <section class="coming-soon-header">
+    <span class="label">Coming Soon</span>
+  </section>
+
+  {comingSoon.map((project) => (
+    <section class="project-item project-item--muted">
+      <h2 class="project-name">{project.name}</h2>
+      <p class="project-desc">{project.description}</p>
     </section>
   ))}
 </Base>
@@ -108,5 +138,22 @@ const projects = [
   .project-link--secondary {
     color: var(--fg-33);
     border-color: var(--fg-15);
+  }
+
+  .coming-soon-header {
+    padding-top: 80px;
+  }
+
+  .label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-33);
+  }
+
+  .project-item--muted {
+    opacity: 0.4;
   }
 </style>
