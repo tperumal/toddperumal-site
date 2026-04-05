@@ -1,39 +1,45 @@
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
 /* ===== Design Tokens ===== */
 :root {
-  --fg: #111111;
-  --fg-80: rgba(17,17,17,0.8);
-  --fg-50: rgba(17,17,17,0.5);
-  --fg-33: rgba(17,17,17,0.333);
-  --fg-25: rgba(17,17,17,0.25);
-  --fg-15: rgba(17,17,17,0.15);
-  --fg-10: rgba(17,17,17,0.1);
-  --fg-5: rgba(17,17,17,0.05);
-  --bg: #faf9f7;
+  --fg: #000000;
+  --fg-80: rgba(0,0,0,0.8);
+  --fg-50: rgba(0,0,0,0.5);
+  --fg-33: rgba(0,0,0,0.333);
+  --fg-25: rgba(0,0,0,0.25);
+  --fg-15: rgba(0,0,0,0.15);
+  --fg-10: rgba(0,0,0,0.1);
+  --fg-05: rgba(0,0,0,0.05);
+  --bg: #ffffff;
+  --accent: #000000;
 
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
 
   --page-gutter: 40px;
-  --content-offset: 260px;
-  --section-space: 140px;
+  --section-space: 80px;
 
-  --text-huge: clamp(2.8rem, 5.5vw, 5rem);
-  --text-large: clamp(1.4rem, 2.2vw, 1.75rem);
+  --text-huge: clamp(2.4rem, 5vw, 4rem);
+  --text-large: clamp(1.2rem, 2vw, 1.5rem);
   --text-body: 1rem;
   --text-small: 0.875rem;
   --text-xs: 0.75rem;
+  --text-label: 0.65rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fg: #eeeeee;
-    --fg-80: rgba(238,238,238,0.8);
-    --fg-50: rgba(238,238,238,0.5);
-    --fg-33: rgba(238,238,238,0.333);
-    --fg-25: rgba(238,238,238,0.25);
-    --fg-15: rgba(238,238,238,0.15);
-    --fg-10: rgba(238,238,238,0.1);
-    --fg-5: rgba(238,238,238,0.05);
-    --bg: #0c0b0a;
+    --fg: #ffffff;
+    --fg-80: rgba(255,255,255,0.8);
+    --fg-50: rgba(255,255,255,0.5);
+    --fg-33: rgba(255,255,255,0.333);
+    --fg-25: rgba(255,255,255,0.25);
+    --fg-15: rgba(255,255,255,0.15);
+    --fg-10: rgba(255,255,255,0.1);
+    --fg-05: rgba(255,255,255,0.05);
+    --bg: #0a0a0a;
+    --accent: #ffffff;
   }
 }
 
@@ -52,7 +58,7 @@ html {
 }
 
 body {
-  font-family: var(--font);
+  font-family: var(--font-body);
   background-color: var(--bg);
   color: var(--fg);
   line-height: 1.5;
@@ -73,14 +79,45 @@ a {
 
 /* ===== Typography ===== */
 h1, h2, h3, h4 {
-  font-family: var(--font);
-  line-height: 1.1;
+  font-family: var(--font-body);
+  font-weight: 900;
+  text-transform: uppercase;
   letter-spacing: -0.02em;
-  font-weight: 600;
+  line-height: 1.1;
 }
 
 p {
   max-width: 60ch;
+}
+
+/* ===== Brutalist Global ===== */
+* {
+  border-radius: 0 !important;
+}
+
+/* ===== Section Labels ===== */
+.section-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-50);
+  margin-bottom: 20px;
+}
+
+/* ===== Tags ===== */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  background: var(--fg);
+  color: var(--bg);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 6px 6px 0;
 }
 
 /* ===== Focus & Selection ===== */
@@ -90,5 +127,6 @@ p {
 }
 
 ::selection {
-  background-color: var(--fg-10);
+  background-color: var(--fg);
+  color: var(--bg);
 }

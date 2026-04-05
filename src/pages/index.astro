@@ -1,96 +1,429 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const projects = [
+  {
+    name: 'FRAN',
+    description: 'Brutalist life management PWA. Tasks, meals, fitness, money, career, hobbies, weekend planning. Voice commands via Claude AI. Household sharing.',
+    tags: ['React 19', 'Vite', 'Supabase', 'Claude API', 'Capacitor'],
+    url: 'https://hive-seven-sable.vercel.app',
+    github: 'https://github.com/tperumal/fran',
+  },
+  {
+    name: 'Neon Puck',
+    description: '2-player air hockey with online multiplayer. Server-authoritative physics at 60 Hz.',
+    tags: ['Canvas', 'Socket.io', 'Node.js', 'Web Audio API'],
+    url: 'https://neon-puck.onrender.com',
+    github: 'https://github.com/tperumal/neon-puck',
+  },
+  {
+    name: 'Signal & Stories',
+    description: 'Economic indicators dashboard tracking Housing, Labor, Inflation, GDP & Growth, and Consumer data from FRED. AI-generated analysis.',
+    tags: ['Next.js', 'Claude API', 'Chart.js', 'FRED API'],
+    url: 'https://signalandstories.dev',
+    github: 'https://github.com/tperumal/signal-and-stories-dashboard',
+  },
+];
+
+const comingSoon = [
+  { name: 'WaterSePush', description: 'Real-time water outage notifications for South Africa' },
+  { name: 'Gaysingh Road', description: 'A project on South African Indians' },
+  { name: 'Ikhaya Club', description: 'An app for family spread apart' },
+];
+
+const stack = ['React', 'Next.js', 'Vite', 'Supabase', 'Vercel', 'Claude API', 'Node.js', 'Capacitor', 'Astro', 'Tailwind', 'PostgreSQL', 'Socket.io'];
 ---
 
 <Base>
+  <!-- Status Strip -->
+  <div class="status-strip">
+    <span class="status-clock" id="status-clock">--:--:-- --</span>
+    <span class="status-indicator" id="status-indicator">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="status-text">LOADING</span>
+    </span>
+  </div>
+
+  <!-- Hero / Typing Animation -->
   <section class="hero">
-    <h1 class="hero-headline">I write essays and build products.</h1>
-    <p class="hero-sub">I'm interested in how things get made — and why most of them don't.</p>
+    <div class="typing-container">
+      <span class="typing-text" id="typing-text"></span><span class="typing-cursor" id="typing-cursor">|</span>
+    </div>
   </section>
 
-  <section class="work-section">
-    <span class="label">Essays</span>
-    <h2 class="work-title">Writing & Ideas</h2>
-    <p class="work-desc">Essays on technology, culture, infrastructure, and how things get made.</p>
-    <a href="/essays" class="work-link">Read essays &rarr;</a>
+  <!-- Now -->
+  <section class="section">
+    <span class="section-label">NOW</span>
+    <p class="now-text">Building FRAN — a brutalist life management app for couples. Living in San Francisco.</p>
   </section>
 
-  <section class="work-section">
-    <span class="label">Projects</span>
-    <h2 class="work-title">Things I've Built</h2>
-    <p class="work-desc">Games, dashboards, and tools — from multiplayer air hockey to economic indicator tracking.</p>
-    <a href="/projects" class="work-link">View all projects &rarr;</a>
+  <!-- Projects -->
+  <section class="section">
+    <span class="section-label">PROJECTS</span>
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <div class="project-card">
+          <h3 class="project-name">{project.name}</h3>
+          <p class="project-desc">{project.description}</p>
+          <div class="project-tags">
+            {project.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <div class="project-links">
+            <a href={project.url} target="_blank" rel="noopener" class="project-link">VIEW LIVE</a>
+            <a href={project.github} target="_blank" rel="noopener" class="project-link">GITHUB</a>
+          </div>
+        </div>
+      ))}
+
+      {comingSoon.map((project) => (
+        <div class="project-card project-card--muted">
+          <h3 class="project-name">{project.name}</h3>
+          <p class="project-desc">{project.description}</p>
+          <span class="coming-soon-badge">COMING SOON</span>
+        </div>
+      ))}
+    </div>
   </section>
 
-  <section class="work-section">
-    <span class="label">Career</span>
-    <h2 class="work-title">Background & Experience</h2>
-    <p class="work-desc">Where I've worked and what I've learned along the way.</p>
-    <a href="https://www.linkedin.com/in/toddperumal/" target="_blank" rel="noopener" class="work-link">View on LinkedIn &rarr;</a>
+  <!-- Stack -->
+  <section class="section">
+    <span class="section-label">STACK</span>
+    <div class="stack-grid">
+      {stack.map((tool) => (
+        <span class="stack-item">{tool}</span>
+      ))}
+    </div>
   </section>
+
+  <!-- Links -->
+  <section class="section">
+    <span class="section-label">LINKS</span>
+    <div class="links-grid">
+      <a href="https://www.linkedin.com/in/toddperumal/" target="_blank" rel="noopener" class="link-block">LINKEDIN</a>
+      <a href="https://github.com/tperumal" target="_blank" rel="noopener" class="link-block">GITHUB</a>
+      <a href="https://toddperumal.substack.com" target="_blank" rel="noopener" class="link-block">SUBSTACK</a>
+    </div>
+  </section>
+
+  <script>
+    // ===== Status Clock =====
+    function updateClock() {
+      const now = new Date();
+      const options = {
+        timeZone: 'America/Los_Angeles',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+      };
+      const timeStr = now.toLocaleTimeString('en-US', options);
+      const clockEl = document.getElementById('status-clock');
+      if (clockEl) clockEl.textContent = timeStr;
+
+      const hour = parseInt(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', hour12: false }));
+      const dotEl = document.getElementById('status-dot');
+      const textEl = document.getElementById('status-text');
+      if (dotEl && textEl) {
+        if (hour >= 8 && hour < 23) {
+          dotEl.style.background = '#00ff00';
+          textEl.textContent = 'CURRENTLY BUILDING';
+        } else {
+          dotEl.style.background = '#ff0000';
+          textEl.textContent = 'CURRENTLY SLEEPING';
+        }
+      }
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // ===== Typing Animation =====
+    const quotes = [
+      { text: 'Concrete is as noble as stone.', author: 'Tadao Ando' },
+      { text: 'The details are not the details. They make the design.', author: 'Charles Eames' },
+      { text: 'Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.', author: 'Saint-Exupery' },
+      { text: 'Architecture is the will of an epoch translated into space.', author: 'Mies van der Rohe' },
+      { text: 'One must imagine Sisyphus happy.', author: 'Albert Camus' },
+      { text: 'We are what we repeatedly do.', author: 'Aristotle' },
+      { text: 'The best way to predict the future is to invent it.', author: 'Alan Kay' },
+      { text: 'The obstacle is the way.', author: 'Marcus Aurelius' },
+      { text: 'Good design is as little design as possible.', author: 'Dieter Rams' },
+      { text: 'Man is condemned to be free.', author: 'Jean-Paul Sartre' },
+    ];
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function initTyping() {
+      const textEl = document.getElementById('typing-text');
+      const cursorEl = document.getElementById('typing-cursor');
+      if (!textEl || !cursorEl) return;
+
+      let shuffled = shuffle(quotes);
+      let idx = 0;
+
+      function animateQuote() {
+        if (idx >= shuffled.length) {
+          shuffled = shuffle(quotes);
+          idx = 0;
+        }
+        const q = shuffled[idx];
+        const fullText = `\u201C${q.text}\u201D \u2014 ${q.author}`;
+        const quoteEnd = q.text.length + 2; // includes open and close quotes
+        let charIdx = 0;
+
+        // Type forward
+        function typeChar() {
+          if (charIdx <= fullText.length) {
+            const current = fullText.substring(0, charIdx);
+            // Bold the quote part, regular for author
+            if (charIdx <= quoteEnd) {
+              textEl.innerHTML = `<strong>${current}</strong>`;
+            } else {
+              textEl.innerHTML = `<strong>${fullText.substring(0, quoteEnd)}</strong>${fullText.substring(quoteEnd, charIdx)}`;
+            }
+            charIdx++;
+            setTimeout(typeChar, 50);
+          } else {
+            // Pause then erase
+            setTimeout(eraseChar, 3000);
+          }
+        }
+
+        function eraseChar() {
+          if (charIdx > 0) {
+            charIdx--;
+            const current = fullText.substring(0, charIdx);
+            if (charIdx <= quoteEnd) {
+              textEl.innerHTML = `<strong>${current}</strong>`;
+            } else {
+              textEl.innerHTML = `<strong>${fullText.substring(0, quoteEnd)}</strong>${fullText.substring(quoteEnd, charIdx)}`;
+            }
+            setTimeout(eraseChar, 30);
+          } else {
+            textEl.innerHTML = '';
+            idx++;
+            setTimeout(animateQuote, 500);
+          }
+        }
+
+        typeChar();
+      }
+
+      // Blinking cursor
+      setInterval(() => {
+        cursorEl.style.opacity = cursorEl.style.opacity === '0' ? '1' : '0';
+      }, 530);
+
+      animateQuote();
+    }
+
+    initTyping();
+    document.addEventListener('astro:after-swap', () => {
+      updateClock();
+      initTyping();
+    });
+  </script>
 </Base>
 
 <style>
-  .hero {
-    padding-bottom: 60px;
+  /* ===== Status Strip ===== */
+  .status-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 2px solid var(--fg);
+    margin-bottom: 60px;
+    font-family: var(--font-mono);
+    font-size: var(--text-small);
   }
 
-  .hero-headline {
-    font-size: var(--text-huge);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    max-width: 18ch;
-    margin-bottom: 16px;
+  .status-clock {
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
   }
 
-  .hero-sub {
-    font-size: var(--text-large);
-    color: var(--fg-50);
-    line-height: 1.4;
-    max-width: 36ch;
-  }
-
-  /* ===== Work Sections ===== */
-  .work-section {
-    padding-top: 40px;
-    border-top: 1px solid var(--fg-10);
-  }
-
-  .label {
-    display: block;
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
     font-size: var(--text-xs);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--fg-33);
-    margin-bottom: 12px;
+    letter-spacing: 0.05em;
   }
 
-  .work-title {
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: #888;
+    display: inline-block;
+  }
+
+  /* ===== Hero / Typing ===== */
+  .hero {
+    padding: 40px 0 80px;
+    min-height: 120px;
+  }
+
+  .typing-container {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    min-height: 3.5em;
+  }
+
+  .typing-text {
+    /* strong children will be bold */
+  }
+
+  .typing-cursor {
+    font-weight: 700;
+    animation: none;
+  }
+
+  /* ===== Sections ===== */
+  .section {
+    padding: 40px 0;
+    border-top: 2px solid var(--fg);
+  }
+
+  /* ===== Now ===== */
+  .now-text {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+  }
+
+  /* ===== Projects ===== */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project-card {
+    border: 2px solid var(--fg);
+    padding: 20px;
+  }
+
+  .project-card--muted {
+    opacity: 0.35;
+  }
+
+  .project-name {
+    font-family: var(--font-body);
+    font-weight: 900;
     font-size: var(--text-large);
-    font-weight: 600;
+    text-transform: uppercase;
     letter-spacing: -0.02em;
     margin-bottom: 8px;
   }
 
-  .work-desc {
-    font-size: var(--text-body);
-    color: var(--fg-50);
+  .project-desc {
+    font-size: var(--text-small);
+    color: var(--fg-80);
     line-height: 1.6;
     margin-bottom: 14px;
   }
 
-  .work-link {
-    font-size: var(--text-small);
-    color: var(--fg-50);
-    border-bottom: 1px solid var(--fg-25);
-    padding-bottom: 1px;
-    transition: color 0.15s ease, border-color 0.15s ease;
+  .project-tags {
+    margin-bottom: 16px;
   }
 
-  .work-link:hover {
-    color: var(--fg);
-    border-color: var(--fg);
+  .project-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .project-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--fg);
+    padding-bottom: 2px;
+    transition: background 0.1s, color 0.1s;
+  }
+
+  .project-link:hover {
+    background: var(--fg);
+    color: var(--bg);
+    padding: 2px 4px;
+    margin: -2px -4px;
+    margin-bottom: 0;
+  }
+
+  .coming-soon-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--fg-50);
+  }
+
+  /* ===== Stack ===== */
+  .stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .stack-item {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 6px 12px;
+    border: 2px solid var(--fg);
+    letter-spacing: 0.03em;
+  }
+
+  /* ===== Links ===== */
+  .links-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .link-block {
+    font-family: var(--font-mono);
+    font-size: var(--text-small);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--fg);
+    padding: 14px 28px;
+    transition: background 0.1s, color 0.1s;
+  }
+
+  .link-block:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 768px) {
+    .status-strip {
+      font-size: var(--text-xs);
+    }
+
+    .hero {
+      padding: 30px 0 50px;
+    }
+
+    .typing-container {
+      font-size: 0.95rem;
+    }
+
+    .links-grid {
+      flex-direction: column;
+    }
+
+    .link-block {
+      text-align: center;
+    }
   }
 </style>
